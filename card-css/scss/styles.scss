@@ -1,0 +1,110 @@
+:root{ 
+/*     color-primary */
+    --dark-cyan: hsl(185, 75%, 39%);
+    --very-dark-desaturated-blue: hsl(229, 23%, 23%);
+    --dark-grayish-blue: hsl(227, 10%, 46%);
+
+ /*     color-neutro */
+    --dark-gray: hsl(0, 0%, 59%);
+    --normal-white: #FFFFFF;
+
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 18px;
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    background-color: var(--dark-cyan);
+    background-image: url('./../images/bg-pattern-top.svg'), url('./../images/bg-pattern-bottom.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: right 50vw bottom 50vh, left 50vw top 50vh;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.main-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card{
+    background-color: var(--normal-white);
+    width: 326px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 6px -6px var(--very-dark-desaturated-blue);
+
+    &-header{
+        width: 100%;
+    }
+
+    &-body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &>*{
+            margin: 0;
+        }
+        
+        & .card-img-profile{
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            border: 5px solid var(--normal-white);
+           /*  position: relative; */
+            margin-top: calc(-50px - 5px) ;
+            margin-bottom: 1rem;
+        }
+
+        & .card-profile-name{
+            font-size: 1rem;
+            color: var(--very-dark-desaturated-blue);
+
+            & span{
+                color: var(--dark-gray);
+                font-weight: 400;
+                font-size: 0.9rem;
+                margin-left: 5px;
+            }
+        }
+        & .card-profile-location{
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--dark-grayish-blue);
+            margin-bottom: 1rem;
+        }
+    }
+    &-footer{
+        display: flex;
+        justify-content: space-around;
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        
+        .social-data{
+            text-align: center;
+            h3{
+                margin: 0;
+                margin-top: 0.8rem;
+                font-weight: 700;
+                font-size: 0.8rem;
+                color: var(--very-dark-desaturated-blue);
+            }
+            
+            p{
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+                font-weight: 300;
+                color: var(--dark-grayish-blue);
+                margin: 0;
+                margin-bottom: 1rem
+            } 
+        }
+    }
+
+}
+
