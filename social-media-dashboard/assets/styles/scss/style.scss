@@ -1,7 +1,9 @@
+@import 'mixins';
 @import 'variables';
 @import 'navbar';
 @import 'body';
-@import 'mixins';
+@import 'footer';
+
 
 
 html{
@@ -33,3 +35,4 @@ html{
         margin: 0;
     }
 }
+

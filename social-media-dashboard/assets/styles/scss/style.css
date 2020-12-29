@@ -115,42 +115,6 @@ nav .light-nav .navbar-content .title h1 {
   color: #1f212e;
 }
 
-html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 14px;
-  font-family: "Inter", sans-serif;
-  background-color: #1e202a;
-  color: #8b97c6;
-  -webkit-transition: ease 0.3s all;
-  transition: ease 0.3s all;
-}
-
-html .light {
-  background-color: white;
-  color: #63687e;
-  -webkit-transition: ease 0.3s all;
-  transition: ease 0.3s all;
-}
-
-*, *::before, *::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-.container {
-  margin: 0 auto;
-  width: 70%;
-  max-width: 1440px;
-}
-
-@media screen and (max-width: 550px) {
-  .container {
-    width: 100%;
-    margin: 0;
-  }
-}
-
 .a-green {
   color: #1db489;
 }
@@ -432,5 +396,47 @@ html .light {
 
 .dashboard .daily-overview .ov-group .light .info p {
   color: #63687e;
+}
+
+.attribution {
+  margin-top: 100px;
+  bottom: 20px;
+  text-align: center;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  background-color: #1e202a;
+  color: #8b97c6;
+  -webkit-transition: ease 0.3s all;
+  transition: ease 0.3s all;
+}
+
+html .light {
+  background-color: white;
+  color: #63687e;
+  -webkit-transition: ease 0.3s all;
+  transition: ease 0.3s all;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 1440px;
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    width: 100%;
+    margin: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */
