@@ -4,6 +4,8 @@
     
     &::before{
         content: url('../../images/icon-up.svg');
+        position: relative;
+        top: -2px;
     }
 }
 .a-red{
@@ -11,6 +13,8 @@
     
     &::before{
         content: url('../../images/icon-down.svg');
+        position: relative;
+        top: -2px;
     }
 }
 
