@@ -32,6 +32,18 @@ $font-fam: 'Inter', sans-serif;
 $font-weight400: 400;
 $font-weight700: 700;
 
+//screen sizes
+$screen-l : 1440px;
+$screen-m : 1000px;
+$screen-s : 550px;
+
+// icons
+$icon-fb: url('../../images/icon-facebook.svg');
+$icon-tw: url('../../images/icon-twitter.svg');
+$icon-ig: url('../../images/icon-instagram.svg');
+$icon-yt: url('../../images/icon-youtube.svg');
+
+
 @mixin bg-toggle{
    background: linear-gradient(to right, hsl(210, 78%, 56%),  hsl(146, 68%, 55%));
 }

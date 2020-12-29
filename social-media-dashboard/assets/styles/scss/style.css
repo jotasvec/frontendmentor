@@ -91,7 +91,7 @@ nav .navbar .navbar-content .dl-toggle .switch input:checked + .slider::before {
           transform: translateX(22px);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   nav .navbar .navbar-content {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -122,11 +122,15 @@ html {
   font-family: "Inter", sans-serif;
   background-color: #1e202a;
   color: #8b97c6;
+  -webkit-transition: ease 0.3s all;
+  transition: ease 0.3s all;
 }
 
 html .light {
   background-color: white;
   color: #63687e;
+  -webkit-transition: ease 0.3s all;
+  transition: ease 0.3s all;
 }
 
 *, *::before, *::after {
@@ -137,9 +141,10 @@ html .light {
 .container {
   margin: 0 auto;
   width: 70%;
+  max-width: 1440px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   .container {
     width: 100%;
     margin: 0;
@@ -162,6 +167,22 @@ html .light {
   content: url("../../images/icon-down.svg");
 }
 
+.-fb {
+  content: url("../../images/icon-facebook.svg");
+}
+
+.-tw {
+  content: url("../../images/icon-twitter.svg");
+}
+
+.-ig {
+  content: url("../../images/icon-instagram.svg");
+}
+
+.-yt {
+  content: url("../../images/icon-youtube.svg");
+}
+
 .dashboard .sc-overview {
   width: 100%;
   position: relative;
@@ -176,14 +197,15 @@ html .light {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   list-style: none;
 }
 
 .dashboard .sc-overview .social-group .card {
   background-color: #252a41;
-  width: 250px;
+  width: 24%;
   height: 200px;
   border-radius: 10px;
   text-align: center;
@@ -201,14 +223,14 @@ html .light {
           justify-content: center;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .dashboard .sc-overview .social-group .card {
     width: 200px;
     margin-top: 20px;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   .dashboard .sc-overview .social-group .card {
     width: 90%;
   }
@@ -267,23 +289,7 @@ html .light {
       align-self: center;
 }
 
-.dashboard .sc-overview .social-group .card .-fb::before {
-  content: url("../../images/icon-facebook.svg");
-  margin-right: 10px;
-}
-
-.dashboard .sc-overview .social-group .card .-tw::before {
-  content: url("../../images/icon-twitter.svg");
-  margin-right: 10px;
-}
-
-.dashboard .sc-overview .social-group .card .-ig::before {
-  content: url("../../images/icon-instagram.svg");
-  margin-right: 10px;
-}
-
-.dashboard .sc-overview .social-group .card .-yt::before {
-  content: url("../../images/icon-youtube.svg");
+.dashboard .sc-overview .social-group .card .social-username span {
   margin-right: 10px;
 }
 
@@ -300,10 +306,11 @@ html .light {
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .dashboard .sc-overview .social-group {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
 }
 
@@ -339,7 +346,7 @@ html .light {
           justify-content: space-between;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   .dashboard .daily-overview .ov-group {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -349,7 +356,7 @@ html .light {
 
 .dashboard .daily-overview .ov-group .card {
   background-color: #252a41;
-  width: 250px;
+  width: 24%;
   height: 100px;
   border-radius: 10px;
   text-align: center;
@@ -368,14 +375,14 @@ html .light {
           justify-content: space-between;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .dashboard .daily-overview .ov-group .card {
     width: 200px;
     margin-top: 20px;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   .dashboard .daily-overview .ov-group .card {
     width: 90%;
   }
@@ -394,22 +401,6 @@ html .light {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.dashboard .daily-overview .ov-group .card .info .-fb {
-  content: url("../../images/icon-facebook.svg");
-}
-
-.dashboard .daily-overview .ov-group .card .info .-tw {
-  content: url("../../images/icon-twitter.svg");
-}
-
-.dashboard .daily-overview .ov-group .card .info .-ig {
-  content: url("../../images/icon-instagram.svg");
-}
-
-.dashboard .daily-overview .ov-group .card .info .-yt {
-  content: url("../../images/icon-youtube.svg");
 }
 
 .dashboard .daily-overview .ov-group .card .numbers {

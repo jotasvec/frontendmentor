@@ -1,0 +1,178 @@
+
+.a-green{
+    color: $lime-green;
+    
+    &::before{
+        content: url('../../images/icon-up.svg');
+    }
+}
+.a-red{
+    color: $bright-red;
+    
+    &::before{
+        content: url('../../images/icon-down.svg');
+    }
+}
+
+.-fb{
+    content: $icon-fb
+}
+.-tw{
+    content: $icon-tw
+}
+.-ig{
+    content: $icon-ig
+}
+.-yt{
+    content: $icon-yt
+}
+
+.dashboard{
+    .sc-overview{
+        width: 100%;
+        position: relative;
+        margin-top: -100px;
+        
+
+        .social-group{
+            // flex: calc(100% / 4);
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            list-style: none;
+
+            // @media screen and (max-width: 760px){
+                
+            // }
+
+            .card{
+                @include card(200px);
+                overflow: hidden;
+                flex-direction: column;
+                justify-content: center;
+
+                *{
+                    margin: 0;
+                    padding: 0;
+                }
+
+                
+                &:first-child::before{
+                    @include top-card-line($facebook);
+                }
+                &:nth-child(2)::before{
+                    @include top-card-line($twitter);
+                }                
+                &:nth-child(3)::before{
+                    @include top-card-line(instagram);
+                }
+                &:nth-child(4)::before{
+                    @include top-card-line($youTube);
+                }
+                
+                .social-username{
+                    display: flex;
+                    align-items: center;
+                    align-self: center;
+                    
+                    span{
+                        margin-right: 10px;
+                    }
+                }
+                
+                .social-number{
+                    font-size: 4rem;
+                    color: $white;
+                    margin-top: 20px;
+                    
+                }
+                
+                .social-follow{
+                    font-weight: $font-weight400;
+                    letter-spacing: 4px;
+                    text-transform: uppercase;
+                    margin-bottom: 20px;
+                }
+
+            }  
+            @media screen and (max-width: $screen-m){
+                justify-content: space-evenly;
+            }
+
+            .light{
+                background-color: $light-grayish-blue;
+                
+                .social-number{
+                    color: $very-dark-blue;
+                }
+        
+                h4{
+                    color: $text-dark-grayish-blue;
+                }
+            }          
+        }
+
+    }
+
+    .daily-overview{
+        margin-top: 5%;
+
+        h2{
+            color: $white;
+            font-size: 2rem;
+        }
+
+        .ov-group{
+            // flex: calc(100% / 4);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+            @media screen and (max-width: $screen-s){
+                justify-content: center;
+            }
+
+            .card{
+                @include card(100px);
+                margin-top: 20px;
+                padding: 1.5rem 2rem;
+                flex-direction: column;
+                justify-content: space-between;
+
+                *{ margin: 0; }
+
+                .info{
+                    display: inherit;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    
+                }
+                .numbers{
+                    display: inherit;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: baseline;
+
+                    p{
+                        font-size: 2rem;
+                        color: $white;
+                    }
+                }
+            }
+
+            .light{
+                background-color: $light-grayish-blue;
+                
+                .numbers p{
+                    color: $very-dark-blue;
+                }
+        
+                .info p{
+                    color: $text-dark-grayish-blue;
+                }
+            }
+        }
+    }
+
+    
+}  
