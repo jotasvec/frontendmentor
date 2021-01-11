@@ -1,0 +1,91 @@
+//colors
+
+// primarys
+$moderate-violet: hsl(263, 55%, 52%);
+$very-dark-grayish-blue: hsl(217, 19%, 35%);
+$very-dark-blackish-blue: hsl(219, 29%, 14%);
+$white: hsl(0, 0%, 100%);
+
+// Neutral
+$light-gray: hsl(0, 0%, 81%);
+$light-grayish-blue: hsl(210, 46%, 95%);
+
+//font
+$font-size: 13px;
+$font-family: 'Barlow Semi Condensed', sans-serif;
+$font-weight500: 500;
+$font-weight600: 600;
+
+
+body{
+    font-size: $font-size;
+    font-family: $font-family;
+    color: $light-grayish-blue;
+
+    background-color: $light-grayish-blue;
+}
+
+.bg-violet{
+    background-color: $moderate-violet;
+}
+
+.bg-dark-grayish-blue{
+    background-color: $very-dark-grayish-blue;
+}
+
+.bg-dark-blackish-blue{
+    background-color: $very-dark-blackish-blue;
+}
+
+.bg-quotation{
+    background-image: url('../images/bg-pattern-quotation.svg');
+    background-repeat: no-repeat;
+    background-position: 85% top;
+}
+
+.txt-top{
+    font-size: 1.2rem;
+    font-weight: $font-weight600;
+}
+
+.txt-bottom{
+    font-weight: $font-weight500;
+    color: $light-gray;
+    opacity: 70%;
+}
+
+.card-body-title{
+    p{
+        color: $white;
+        opacity: 50%;
+    }
+}
+
+.d-flex img{
+    width: 40px;
+    height: 40px;
+}
+
+.txt-dark{
+    color: $very-dark-blackish-blue;
+    * p{
+        color: $very-dark-blackish-blue;
+    }
+}
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 960px,
+  xxl: 960px
+);
+
+@media screen and (min-width: 992px){
+    .height-100{
+      height: 100vh;
+    }
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
