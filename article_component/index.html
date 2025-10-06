@@ -46,10 +46,20 @@
               <p class="s_date">28 Jun 2020</p>
             </div>
           </div>
-          <div id="shareGroup"></div>
-          <button id="shareButton" class="s_right rounded-full w-12 h-12 cursor-pointer" type="submit">
-            <img src="./images/icon-share.svg" alt="Share" class="items-center-safe m-auto h-5">
-          </button>
+          <div class="s_right relative">
+            <button id="shareButton" class="rounded-full w-12 h-12 cursor-pointer" type="submit">
+              <img src="./images/icon-share.svg" alt="Share" class="items-center-safe m-auto h-5">
+            </button>
+            <div id="shareGroup" class="hidden flex-col bottom-16 right-0 z-20 w-50 h-12 ">
+              <div class="iconsGroups h-11 ps-1 flex rounded-2xl items-center justify-evenly">
+                <p class="mr-2 uppercase">Share </p>
+                <a><img src="./images/icon-facebook.svg" alt="Facebook" srcset=""></a>
+                <a><img src="./images/icon-twitter.svg" alt="Twitter / X" srcset=""></a>
+                <a><img src="./images/icon-pinterest.svg" alt="Pinterest" srcset=""></a>
+              </div>
+              <div class="t_bottom mx-auto justify-self-center"></div>
+            </div>
+          </div>
         </div><!--Signature-->
       </div><!--Card right-->
     </div> <!--Card div-->
