@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel Tests</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .thumbnail-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      background-color: #fff;
+      position: relative;
+    }
+
+    .thumbnail-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transform-origin: top left;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .slide-card {
+      cursor: pointer;
+      width: 320px;
+      flex-shrink: 0;
+    }
+
+    .slide-card:hover .thumbnail-container {
+      border-color: #667eea;
+    }
+
+    #carousel {
+      scrollbar-width: none;
+    }
+
+    #carousel::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+  <h1 class="text-3xl font-bold mb-8 text-center">Carousel Tests</h1>
+  
+  <main class="flex-1 flex items-center px-4 mb-8">
+    <div class="relative w-full max-w-full mx-auto">
+      <div id="carousel" class="overflow-x-auto scroll-smooth snap-x snap-mandatory">
+        <div id="carousel-track" class="flex gap-4 py-4 px-2">
+        </div>
+      </div>
+
+      <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition z-10">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <button id="next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition z-10">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <div id="dots" class="flex justify-center gap-2 mt-4"></div>
+    </div>
+  </main>
+
+  <div class="max-w-4xl mx-auto">
+    <div id="test-results" class="space-y-4"></div>
+  </div>
+
+  <script>
+    const projects = [
+      {
+        folder: 'article_component',
+        title: 'Article Preview Component',
+        subtitle: 'Article preview with share tooltip using Tailwind & Vanilla JS'
+      },
+      {
+        folder: 'card-css',
+        title: 'Profile Card',
+        subtitle: 'Profile card component built with HTML and Sass'
+      },
+      {
+        folder: 'easybank-landing-page-master',
+        title: 'Easybank Landing Page',
+        subtitle: 'Full landing page with responsive design'
+      },
+      {
+        folder: 'faq-accordion-css',
+        title: 'FAQ Accordion',
+        subtitle: 'Interactive accordion component with HTML, Sass & JS'
+      },
+      {
+        folder: 'social-media-dashboard',
+        title: 'Social Media Dashboard',
+        subtitle: 'Dashboard with theme switcher (light/dark mode)'
+      },
+      {
+        folder: 'testimonials-grid-section-main',
+        title: 'Testimonials Grid',
+        subtitle: 'Responsive testimonials grid layout'
+      }
+    ];
+
+    let currentIndex = 0;
+    const track = document.getElementById('carousel-track');
+    const dotsContainer = document.getElementById('dots');
+    const carousel = document.getElementById('carousel');
+
+    function calculateScale() {
+      const containers = document.querySelectorAll('.thumbnail-container');
+      const cardWidth = 320;
+      
+      const scaleX = (cardWidth - 32) / 1200;
+      const scale = Math.min(scaleX, 1);
+      
+      containers.forEach(container => {
+        const iframe = container.querySelector('iframe');
+        iframe.style.width = '1200px';
+        iframe.style.height = '800px';
+        iframe.style.transform = `scale(${scale})`;
+      });
+    }
+
+    projects.forEach((project, index) => {
+      const slide = document.createElement('div');
+      slide.className = 'flex-shrink-0 px-2';
+      slide.innerHTML = `
+        <a href="${project.folder}/index.html" class="slide-card block bg-white rounded-xl shadow-lg hover:shadow-xl transition border border-gray-200 overflow-hidden">
+          <div class="thumbnail-container" data-folder="${project.folder}">
+            <iframe 
+              src="${project.folder}/index.html" 
+              class="thumbnail-iframe"
+              title="${project.title}"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="p-4">
+            <h2 class="text-lg font-bold text-gray-800 mb-1">${project.title}</h2>
+            <p class="text-sm text-gray-600">${project.subtitle}</p>
+          </div>
+        </a>
+      `;
+      track.appendChild(slide);
+
+      const dot = document.createElement('button');
+      dot.className = `w-3 h-3 rounded-full transition ${index === 0 ? 'bg-gray-800' : 'bg-gray-300'}`;
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    function updateCarousel() {
+      const cardWidth = 320 + 16;
+      carousel.scrollTo({
+        left: currentIndex * cardWidth,
+        behavior: 'smooth'
+      });
+      document.querySelectorAll('#dots button').forEach((dot, i) => {
+        dot.className = `w-3 h-3 rounded-full transition ${i === currentIndex ? 'bg-gray-800' : 'bg-gray-300'}`;
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % projects.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+      updateCarousel();
+    }
+
+    carousel.addEventListener('scroll', () => {
+      const cardWidth = 320 + 16;
+      const newIndex = Math.round(carousel.scrollLeft / cardWidth);
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        document.querySelectorAll('#dots button').forEach((dot, i) => {
+          dot.className = `w-3 h-3 rounded-full transition ${i === currentIndex ? 'bg-gray-800' : 'bg-gray-300'}`;
+        });
+      }
+    });
+
+    document.getElementById('next-btn').addEventListener('click', nextSlide);
+    document.getElementById('prev-btn').addEventListener('click', prevSlide);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    window.addEventListener('load', calculateScale);
+    window.addEventListener('resize', calculateScale);
+
+    // Tests
+    const tests = [];
+    
+    function test(name, fn) {
+      tests.push({ name, fn });
+    }
+    
+    function assert(condition, message) {
+      if (!condition) throw new Error(message);
+    }
+    
+    test('Projects array should have 6 items', () => {
+      const projects = document.querySelectorAll('#carousel-track > div');
+      assert(projects.length === 6, `Expected 6 projects, got ${projects.length}`);
+    });
+    
+    test('Each project should have a thumbnail container', () => {
+      const containers = document.querySelectorAll('.thumbnail-container');
+      assert(containers.length === 6, `Expected 6 containers, got ${containers.length}`);
+    });
+    
+    test('Each project should have an iframe', () => {
+      const iframes = document.querySelectorAll('.thumbnail-iframe');
+      assert(iframes.length === 6, `Expected 6 iframes, got ${iframes.length}`);
+    });
+    
+    test('Iframes should have pointer-events: none', () => {
+      const iframe = document.querySelector('.thumbnail-iframe');
+      const style = window.getComputedStyle(iframe);
+      assert(style.pointerEvents === 'none', `Expected pointer-events: none, got ${style.pointerEvents}`);
+    });
+    
+    test('Iframes should have transform-origin: top left', () => {
+      const iframe = document.querySelector('.thumbnail-iframe');
+      const style = window.getComputedStyle(iframe);
+      const origin = style.transformOrigin;
+      assert(origin === '0px 0px' || origin === '0% 0%' || origin === 'top left', 
+        `Expected transform-origin: top left, got ${origin}`);
+    });
+    
+    test('Each project should link to its index.html', () => {
+      const links = document.querySelectorAll('#carousel-track a');
+      const expectedHrefs = [
+        'article_component/index.html',
+        'card-css/index.html',
+        'easybank-landing-page-master/index.html',
+        'faq-accordion-css/index.html',
+        'social-media-dashboard/index.html',
+        'testimonials-grid-section-main/index.html'
+      ];
+      
+      links.forEach((link, i) => {
+        assert(link.href.includes(expectedHrefs[i]), 
+          `Expected href to include ${expectedHrefs[i]}, got ${link.href}`);
+      });
+    });
+    
+    test('Carousel should have prev and next buttons', () => {
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      assert(prevBtn !== null, 'prev-btn not found');
+      assert(nextBtn !== null, 'next-btn not found');
+    });
+    
+    test('Carousel should have dots navigation', () => {
+      const dots = document.querySelectorAll('#dots button');
+      assert(dots.length === 6, `Expected 6 dots, got ${dots.length}`);
+    });
+    
+    test('Slide cards should have correct width', () => {
+      const card = document.querySelector('.slide-card');
+      const style = window.getComputedStyle(card);
+      assert(style.width === '320px', `Expected width 320px, got ${style.width}`);
+    });
+    
+    test('Thumbnail container should have overflow hidden', () => {
+      const container = document.querySelector('.thumbnail-container');
+      const style = window.getComputedStyle(container);
+      assert(style.overflow === 'hidden', `Expected overflow: hidden, got ${style.overflow}`);
+    });
+    
+    test('Dots should update on carousel scroll', () => {
+      const dots = document.querySelectorAll('#dots button');
+      const activeDot = document.querySelector('#dots button.bg-gray-800');
+      assert(activeDot !== null, 'No active dot found');
+    });
+    
+    test('iframe src should point to project folder index.html', () => {
+      const iframes = document.querySelectorAll('.thumbnail-iframe');
+      const expectedSrcs = [
+        'article_component/index.html',
+        'card-css/index.html',
+        'easybank-landing-page-master/index.html',
+        'faq-accordion-css/index.html',
+        'social-media-dashboard/index.html',
+        'testimonials-grid-section-main/index.html'
+      ];
+      
+      iframes.forEach((iframe, i) => {
+        assert(iframe.src.includes(expectedSrcs[i]),
+          `Expected src to include ${expectedSrcs[i]}, got ${iframe.src}`);
+      });
+    });
+    
+    // Run tests
+    const results = document.getElementById('test-results');
+    let passed = 0;
+    let failed = 0;
+    
+    tests.forEach(t => {
+      const div = document.createElement('div');
+      div.className = 'p-4 rounded-lg';
+      
+      try {
+        t.fn();
+        div.className += ' bg-green-100 border border-green-300';
+        div.innerHTML = `<span class="text-green-700 font-bold">✓</span> ${t.name}`;
+        passed++;
+      } catch (e) {
+        div.className += ' bg-red-100 border border-red-300';
+        div.innerHTML = `<span class="text-red-700 font-bold">✗</span> ${t.name}<br><span class="text-red-600 text-sm">${e.message}</span>`;
+        failed++;
+      }
+      
+      results.appendChild(div);
+    });
+    
+    // Summary
+    const summary = document.createElement('div');
+    summary.className = 'mt-8 p-6 bg-white rounded-lg shadow-lg text-center';
+    summary.innerHTML = `
+      <h2 class="text-2xl font-bold mb-4">Test Results</h2>
+      <p class="text-xl text-green-600 mb-2">Passed: ${passed}</p>
+      <p class="text-xl text-red-600">Failed: ${failed}</p>
+    `;
+    results.prepend(summary);
+  </script>
+</body>
+</html>
