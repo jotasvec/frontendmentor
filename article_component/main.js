@@ -7,9 +7,9 @@ shareList.className = "share-list flex-col bottom-16 right-0 z-20 w-50 h-12"; //
 shareList.innerHTML = `
     <div class="icons-groups h-11 ps-1 flex rounded-2xl items-center justify-evenly">
         <p class="mr-2 uppercase">Share</p>
-        <a><img src="./images/icon-facebook.svg" alt="Facebook" srcset="" /></a>
-        <a><img src="./images/icon-twitter.svg" alt="Twitter / X" srcset="" /></a>
-        <a><img src="./images/icon-pinterest.svg" alt="Pinterest" srcset="" /></a>
+        <a href="#" ><img src="./images/icon-facebook.svg" alt="Facebook" srcset="" /></a>
+        <a href="#" ><img src="./images/icon-twitter.svg" alt="Twitter / X" srcset="" /></a>
+        <a href="#" ><img src="./images/icon-pinterest.svg" alt="Pinterest" srcset="" /></a>
     </div>
     <div class="t_bottom mx-auto justify-self-center"></div> <!-- triangle bellow the share group -->
   `;

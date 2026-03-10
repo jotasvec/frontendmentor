@@ -27,6 +27,12 @@ body {
     color: var(--Desaturated-Dark-Blue);
 }
 
+a {
+    text-decoration: underline;
+    color: var(--Grayish-Blue);
+    font-weight: 700;
+}
+
 .card {
     background-color: whitesmoke;
     border-radius: 10px;
