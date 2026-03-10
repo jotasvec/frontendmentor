@@ -24,6 +24,7 @@ body {
     font-weight: 500;
     font-size: 13px;
     font-style: normal;
+    color: var(--Desaturated-Dark-Blue);
 }
 
 .card {
@@ -42,7 +43,6 @@ body {
 }
 .s_date {
     font-weight: 500;
-    color: var(--Grayish-Blue);
 }
 
 .s_right button {
