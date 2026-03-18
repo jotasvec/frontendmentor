@@ -1,0 +1,53 @@
+/* ========================================
+   Newsletter Sign-up Form - Styles
+   ======================================== */
+
+/* --- CSS Variables (Design Tokens) --- */
+:root {
+  /* Colors - from style-guide.md */
+  --color-primary: hsl(4, 100%, 67%);
+  --color-neutral-dark: hsl(234, 29%, 20%);
+  --color-neutral-medium: hsl(235, 18%, 26%);
+  --color-neutral-light: hsl(0, 0%, 58%);
+  --color-white: hsl(0, 0%, 100%);
+
+  /* Typography */
+  --font-family: 'Roboto', sans-serif;
+  --font-size-base: 16px;
+
+  /* Spacing */
+  /* TODO: Add spacing variables as needed */
+
+  /* Border Radius */
+  /* TODO: Add border radius values */
+}
+
+/* --- Reset & Base Styles --- */
+/* TODO: Add your reset styles here */
+
+/* --- Layout Styles --- */
+/* TODO: Add your layout styles here (Flexbox or Grid?) */
+
+/* --- Component Styles --- */
+
+/* Form Card */
+/* TODO: Style the main card container */
+
+/* Form Elements */
+/* TODO: Style the input field */
+
+/* TODO: Style the input field (error state) */
+
+/* TODO: Style the submit button */
+
+/* TODO: Style button hover/focus states */
+
+/* --- Success Message (hidden by default) --- */
+/* TODO: Style the success message card */
+
+/* TODO: Add class to hide/show success message */
+
+/* --- Responsive Styles --- */
+/* TODO: Add mobile-first styles */
+
+/* TODO: Add desktop breakpoint styles (min-width: 768px or similar) */
