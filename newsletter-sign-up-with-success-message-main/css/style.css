@@ -1,9 +1,13 @@
+@import "tailwindcss";
 /* ========================================
    Newsletter Sign-up Form - Styles
    ======================================== */
 
 /* --- CSS Variables (Design Tokens) --- */
 :root {
+  /* Screen Sizes */
+  --mobile-size: 375px;
+  --desktop-size: 1440px;
   /* Colors - from style-guide.md */
   --color-primary: hsl(4, 100%, 67%);
   --color-neutral-dark: hsl(234, 29%, 20%);
@@ -14,6 +18,8 @@
   /* Typography */
   --font-family: 'Roboto', sans-serif;
   --font-size-base: 16px;
+  --font-weight-400: 400; 
+  --font-weight-700: 700; 
 
   /* Spacing */
   /* TODO: Add spacing variables as needed */
@@ -22,8 +28,15 @@
   /* TODO: Add border radius values */
 }
 
+body{
+  font: var(--font-family);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-base);
+
+}
 /* --- Reset & Base Styles --- */
 /* TODO: Add your reset styles here */
+
 
 /* --- Layout Styles --- */
 /* TODO: Add your layout styles here (Flexbox or Grid?) */
@@ -32,6 +45,30 @@
 
 /* Form Card */
 /* TODO: Style the main card container */
+.card{
+
+  .card__title{
+    color: var(--color-neutral-dark);
+    font-size: 2rem;
+    font-weight: var(--font-weight-700);
+  }
+
+  .card__list {
+    margin-bottom: 2rem;
+    li{
+      margin-top: 1rem;
+      list-style: none;
+      
+      &::before{
+        content: "";
+        background-image: url("../assets/images/icon-list.svg");
+        background-repeat: no-repeat;
+        background-size: 1rem 1rem;
+        padding-left: 1.5rem;
+      }
+    }
+  }
+}
 
 /* Form Elements */
 /* TODO: Style the input field */
